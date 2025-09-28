@@ -7,19 +7,21 @@ const orderSchema = new Schema({
         type: String,
         default: () => nanoid(7),
     },
-    product: {
-        type: Schema.Types.ObjectId,
-        ref: 'Product',
-        required: true
-    },
+    products: [{
+        id: {
+            type: Schema.Types.ObjectId,
+            ref: 'Product',
+            required: true
+        },
+        quantity: {
+            type: Number,
+            required: true
+        }
+    }],
     user: {
         type: Schema.Types.ObjectId,
         ref: 'User',
         required: true
-    },
-    quantity: {
-        type: Number,
-        default: 1
     },
     status: {
         type: String,
